@@ -1,4 +1,5 @@
 from flask import Flask, request
+import os
 
 app = Flask(__name__)
 
@@ -21,4 +22,5 @@ def greet_query():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=45000)
+    host = os.environ.get('FLASK_RUN_HOST', 'localhost')
+    app.run(host=host, port=45000)
